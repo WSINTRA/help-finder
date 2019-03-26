@@ -1,0 +1,143 @@
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ bin/rails:9
+  [1m[35m (1.5ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL PRIMARY KEY)[0m
+  ↳ bin/rails:9
+  [1m[35m (0.8ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" varchar NOT NULL PRIMARY KEY, "value" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  ↳ bin/rails:9
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+Migrating to CreateUsers (20190326173630)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ bin/rails:9
+  [1m[35m (0.4ms)[0m  [1m[35mCREATE TABLE "users" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "username" varchar, "password_digest" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  ↳ db/migrate/20190326173630_create_users.rb:3
+  [1m[36mActiveRecord::SchemaMigration Create (0.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20190326173630"]]
+  ↳ bin/rails:9
+  [1m[35m (0.8ms)[0m  [1m[36mcommit transaction[0m
+  ↳ bin/rails:9
+Migrating to CreateComments (20190326173707)
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ bin/rails:9
+  [1m[35m (0.3ms)[0m  [1m[35mCREATE TABLE "comments" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "description" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  ↳ db/migrate/20190326173707_create_comments.rb:3
+  [1m[36mActiveRecord::SchemaMigration Create (0.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20190326173707"]]
+  ↳ bin/rails:9
+  [1m[35m (0.6ms)[0m  [1m[36mcommit transaction[0m
+  ↳ bin/rails:9
+Migrating to CreateUserComments (20190326173753)
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ bin/rails:9
+  [1m[35m (0.4ms)[0m  [1m[35mCREATE TABLE "user_comments" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "user_id" integer, "comment_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL, CONSTRAINT "fk_rails_c4e95a001e"
+FOREIGN KEY ("user_id")
+  REFERENCES "users" ("id")
+, CONSTRAINT "fk_rails_4700b9144c"
+FOREIGN KEY ("comment_id")
+  REFERENCES "comments" ("id")
+)[0m
+  ↳ db/migrate/20190326173753_create_user_comments.rb:3
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE  INDEX "index_user_comments_on_user_id" ON "user_comments" ("user_id")[0m
+  ↳ db/migrate/20190326173753_create_user_comments.rb:3
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE  INDEX "index_user_comments_on_comment_id" ON "user_comments" ("comment_id")[0m
+  ↳ db/migrate/20190326173753_create_user_comments.rb:3
+  [1m[36mActiveRecord::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20190326173753"]]
+  ↳ bin/rails:9
+  [1m[35m (0.6ms)[0m  [1m[36mcommit transaction[0m
+  ↳ bin/rails:9
+Migrating to CreateFacilities (20190326173841)
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ bin/rails:9
+  [1m[35m (0.3ms)[0m  [1m[35mCREATE TABLE "facilities" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "address" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  ↳ db/migrate/20190326173841_create_facilities.rb:3
+  [1m[36mActiveRecord::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20190326173841"]]
+  ↳ bin/rails:9
+  [1m[35m (0.8ms)[0m  [1m[36mcommit transaction[0m
+  ↳ bin/rails:9
+Migrating to CreateServices (20190326173930)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ bin/rails:9
+  [1m[35m (0.4ms)[0m  [1m[35mCREATE TABLE "services" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "service_type" integer, "description" varchar, "hours" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  ↳ db/migrate/20190326173930_create_services.rb:3
+  [1m[36mActiveRecord::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20190326173930"]]
+  ↳ bin/rails:9
+  [1m[35m (0.5ms)[0m  [1m[36mcommit transaction[0m
+  ↳ bin/rails:9
+Migrating to CreateServiceTypes (20190326173951)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ bin/rails:9
+  [1m[35m (0.3ms)[0m  [1m[35mCREATE TABLE "service_types" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  ↳ db/migrate/20190326173951_create_service_types.rb:3
+  [1m[36mActiveRecord::SchemaMigration Create (0.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20190326173951"]]
+  ↳ bin/rails:9
+  [1m[35m (0.7ms)[0m  [1m[36mcommit transaction[0m
+  ↳ bin/rails:9
+Migrating to CreateFacilityServices (20190326174024)
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ bin/rails:9
+  [1m[35m (0.4ms)[0m  [1m[35mCREATE TABLE "facility_services" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "facility_id" integer, "service_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL, CONSTRAINT "fk_rails_fd9e3006a4"
+FOREIGN KEY ("facility_id")
+  REFERENCES "facilities" ("id")
+, CONSTRAINT "fk_rails_fabfec89e1"
+FOREIGN KEY ("service_id")
+  REFERENCES "services" ("id")
+)[0m
+  ↳ db/migrate/20190326174024_create_facility_services.rb:3
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE  INDEX "index_facility_services_on_facility_id" ON "facility_services" ("facility_id")[0m
+  ↳ db/migrate/20190326174024_create_facility_services.rb:3
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE  INDEX "index_facility_services_on_service_id" ON "facility_services" ("service_id")[0m
+  ↳ db/migrate/20190326174024_create_facility_services.rb:3
+  [1m[36mActiveRecord::SchemaMigration Create (0.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20190326174024"]]
+  ↳ bin/rails:9
+  [1m[35m (0.8ms)[0m  [1m[36mcommit transaction[0m
+  ↳ bin/rails:9
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  ↳ bin/rails:9
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ bin/rails:9
+  [1m[36mActiveRecord::InternalMetadata Create (0.3ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["key", "environment"], ["value", "development"], ["created_at", "2019-03-26 17:47:56.156041"], ["updated_at", "2019-03-26 17:47:56.156041"]]
+  ↳ bin/rails:9
+  [1m[35m (0.6ms)[0m  [1m[36mcommit transaction[0m
+  ↳ bin/rails:9
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Create (0.4ms)[0m  [1m[32mINSERT INTO "users" ("created_at", "updated_at") VALUES (?, ?)[0m  [["created_at", "2019-03-26 17:49:36.815050"], ["updated_at", "2019-03-26 17:49:36.815050"]]
+  [1m[35m (0.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mComment Create (0.3ms)[0m  [1m[32mINSERT INTO "comments" ("created_at", "updated_at") VALUES (?, ?)[0m  [["created_at", "2019-03-26 17:49:48.042619"], ["updated_at", "2019-03-26 17:49:48.042619"]]
+  [1m[35m (0.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[36mComment Load (0.3ms)[0m  [1m[34mSELECT  "comments".* FROM "comments" INNER JOIN "user_comments" ON "comments"."id" = "user_comments"."comment_id" WHERE "user_comments"."user_id" = ? LIMIT ?[0m  [["user_id", 1], ["LIMIT", 11]]
+  [1m[36mComment Load (0.3ms)[0m  [1m[34mSELECT "comments".* FROM "comments"[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUserComment Create (0.4ms)[0m  [1m[32mINSERT INTO "user_comments" ("user_id", "comment_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["user_id", 1], ["comment_id", 1], ["created_at", "2019-03-26 17:51:50.757012"], ["updated_at", "2019-03-26 17:51:50.757012"]]
+  [1m[35m (3.5ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mComment Load (0.1ms)[0m  [1m[34mSELECT  "comments".* FROM "comments" INNER JOIN "user_comments" ON "comments"."id" = "user_comments"."comment_id" WHERE "user_comments"."user_id" = ? LIMIT ?[0m  [["user_id", 1], ["LIMIT", 11]]
+  [1m[36mComment Load (0.5ms)[0m  [1m[34mSELECT "comments".* FROM "comments"[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" INNER JOIN "user_comments" ON "users"."id" = "user_comments"."user_id" WHERE "user_comments"."comment_id" = ? LIMIT ?[0m  [["comment_id", 1], ["LIMIT", 11]]
+  [1m[36mComment Load (0.7ms)[0m  [1m[34mSELECT "comments".* FROM "comments"[0m
+  [1m[36mComment Load (0.5ms)[0m  [1m[34mSELECT "comments".* FROM "comments"[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" INNER JOIN "user_comments" ON "users"."id" = "user_comments"."user_id" WHERE "user_comments"."comment_id" = ? LIMIT ?[0m  [["comment_id", 1], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mServiceType Create (0.4ms)[0m  [1m[32mINSERT INTO "service_types" ("created_at", "updated_at") VALUES (?, ?)[0m  [["created_at", "2019-03-26 18:04:34.975807"], ["updated_at", "2019-03-26 18:04:34.975807"]]
+  [1m[35m (3.7ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mService Create (0.3ms)[0m  [1m[32mINSERT INTO "services" ("created_at", "updated_at") VALUES (?, ?)[0m  [["created_at", "2019-03-26 18:04:46.789356"], ["updated_at", "2019-03-26 18:04:46.789356"]]
+  [1m[35m (0.7ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mService Load (0.2ms)[0m  [1m[34mSELECT "services".* FROM "services"[0m
+  [1m[36mService Load (0.1ms)[0m  [1m[34mSELECT "services".* FROM "services"[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mFacility Create (0.3ms)[0m  [1m[32mINSERT INTO "facilities" ("created_at", "updated_at") VALUES (?, ?)[0m  [["created_at", "2019-03-26 18:05:22.849049"], ["updated_at", "2019-03-26 18:05:22.849049"]]
+  [1m[35m (0.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mFacility Load (0.3ms)[0m  [1m[34mSELECT "facilities".* FROM "facilities"[0m
+  [1m[36mService Load (0.2ms)[0m  [1m[34mSELECT  "services".* FROM "services" INNER JOIN "facility_services" ON "services"."id" = "facility_services"."service_id" WHERE "facility_services"."facility_id" = ? LIMIT ?[0m  [["facility_id", 1], ["LIMIT", 11]]
+  [1m[36mFacility Load (0.2ms)[0m  [1m[34mSELECT "facilities".* FROM "facilities"[0m
+  [1m[36mService Load (0.1ms)[0m  [1m[34mSELECT "services".* FROM "services"[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mFacilityService Create (0.9ms)[0m  [1m[32mINSERT INTO "facility_services" ("facility_id", "service_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["facility_id", 1], ["service_id", 1], ["created_at", "2019-03-26 18:05:51.307050"], ["updated_at", "2019-03-26 18:05:51.307050"]]
+  [1m[35m (3.4ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mService Load (0.1ms)[0m  [1m[34mSELECT  "services".* FROM "services" INNER JOIN "facility_services" ON "services"."id" = "facility_services"."service_id" WHERE "facility_services"."facility_id" = ? LIMIT ?[0m  [["facility_id", 1], ["LIMIT", 11]]
+  [1m[36mService Load (1.2ms)[0m  [1m[34mSELECT "services".* FROM "services"[0m
+  [1m[36mFacility Load (0.3ms)[0m  [1m[34mSELECT  "facilities".* FROM "facilities" INNER JOIN "facility_services" ON "facilities"."id" = "facility_services"."facility_id" WHERE "facility_services"."service_id" = ? LIMIT ?[0m  [["service_id", 1], ["LIMIT", 11]]
