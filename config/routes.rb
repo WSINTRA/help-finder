@@ -6,5 +6,11 @@ Rails.application.routes.draw do
   resources :user_comments
   resources :comments
   resources :users
+
+
+  get "/sessions/new", to: "sessions#new", as: "login" #login_path
+  delete "/sessions", to: "sessions#destroy"
+  get "/login", to: "sessions#new"
+  post "/sessions", to: "sessions#create"
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
