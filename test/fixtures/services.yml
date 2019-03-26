@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  service_type: 1
+  description: MyString
+  hours: MyString
+
+two:
+  service_type: 1
+  description: MyString
+  hours: MyString
