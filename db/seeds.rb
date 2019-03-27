@@ -5,3 +5,9 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+kitchen = ServiceType.create!(name: "Kitchen")
+facility = Facility.create!(name: "Feed the People", address: "1000 Fake Pl.")
+kitchenservice = Service.create!(service_type: kitchen.id, description: "Taco Tuesday!", hours: "11AM - 2PM")
+
+facility.services << kitchenservice
