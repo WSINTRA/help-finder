@@ -1,4 +1,4 @@
 class Comment < ApplicationRecord
-	has_one :user_comment
-	has_one :user, through: :user_comment
+	belongs_to :user
+	belongs_to :facility
 end
