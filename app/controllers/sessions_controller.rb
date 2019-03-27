@@ -12,8 +12,13 @@ class SessionsController < ApplicationController
       session[:user_id] = @user.id
       redirect_to user_path(@user)
     else
+      if @user != nil #Built this so it catches incorrect usernames - WS
      @user.errors.add(:incorrect, "username or password")
-      render :new
+      else
+      @user = User.new 
+      @user.errors.add(:incorrect, "username or password")
+    end
+    render :new
     end
   end
 

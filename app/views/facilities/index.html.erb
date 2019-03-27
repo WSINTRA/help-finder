@@ -1,0 +1,12 @@
+<br><div class='middle'>
+<center>
+<%@facility_ids.each do |id|%>
+<h1><%= Facility.find(id).name %>
+<%= Facility.find(id).address %></h1><br>
+<%= Facility.find(id).map_link.html_safe %></h1>
+
+	<%end %>
+	</center></div>
+	<div class='left-sidebar'>
+		<h1><%=link_to "BACK", :back%></h1>
+	</div>
