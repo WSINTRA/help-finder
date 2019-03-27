@@ -1,11 +1,13 @@
 
 <center><%= render "/layouts/welcome" %></center>
-<center>
+
+<div class='middle'><br><center>
+
 <% @services.each do |service| %>
 	<br><ul>
 		<li>
 	<h1><%= link_to service.description, facilities_path(:service => {:service_type => "#{service.id}"})%></h1><br>
 	<h1><%= service.hours %></h1></li>
 </ul>
-	<%end %>
-	</center>
+	<%end %></center>
+</div>
