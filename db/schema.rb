@@ -21,6 +21,7 @@ ActiveRecord::Schema.define(version: 2019_03_26_174024) do
   create_table "facilities", force: :cascade do |t|
     t.string "name"
     t.string "address"
+    t.string "map_link"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
