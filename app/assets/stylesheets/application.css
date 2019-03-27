@@ -75,8 +75,8 @@ section {
   width: 30%;
 }
 .image-size {
-  max-width: 300px;
-  max-height: 200px;
+  max-width: 50%;
+  max-height: 50%;
 }
 .wrapper {
 	width: 100%;
@@ -90,8 +90,10 @@ h1 { font-size: 24px; }
 /* Header
 -----------------------------------------------------------------------------*/
 .header {
-	height: 250px;
-	background: #FFE680;
+	overflow: hidden;
+	
+	padding: 20px 10px;
+	background: #ffff80;
 
 }
 
