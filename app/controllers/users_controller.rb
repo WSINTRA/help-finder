@@ -1,6 +1,10 @@
 class UsersController < ApplicationController
   before_action :authorized, except: [:new, :create]
+  
 
+  def index
+    
+  end
 	def new
     # GET /users/new
     if logged_in?
