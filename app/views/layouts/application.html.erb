@@ -10,7 +10,7 @@
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
-  <body>
+  <body >
     <br>
     <div class="container">
       <div class="columns is-centered">
@@ -20,14 +20,16 @@
 
 <nav class="level">
   <p class="level-item has-text-centered">
-    <a class="link is-info">Home</a>
+          <%= image_tag("Artboard 1.png",style: 'height:60px;width:auto;text-align: center')%>
+  <p class="level-item has-text-centered">
+    
+    <h1><%= link_to "Home", users_path(@user), class: "link is-info" %></h1>
   </p>
   <p class="level-item has-text-centered">
-    <%= link_to "Services", "/services", class: "link is-info" %>
+    <h1><%= link_to "Services", "/services", class: "link is-info" %></h1>
     <!-- <a class="link is-info">Services</a> -->
   </p>
-  <p class="level-item has-text-centered">
-          <%= image_tag("Artboard 1.png",style: 'height:30px;width:auto;text-align: center')%><br>
+  <br><br>
   </p>
 
   <% if logged_in? %>
@@ -38,20 +40,20 @@
   </p>
   <% else %>
   <p class="level-item has-text-centered">
-    <%= link_to "Register", "/users/new" %>
-  </p>
-  <p class="level-item has-text-centered">
+  <h1>  <%= link_to "Register", "/users/new" %>
+  </p></h1>
+  <p class="level-item has-text-centered"><h1>
     <%= link_to "Login", "/sessions/new" %>
-  </p>
+  </p></h1>
   <% end %>
 </nav>
 
        </div>
      </div>
-   </div>
+   </div><br><br>
     <%= yield %>
 
-    
- 
+  
   </body>
+
 </html>

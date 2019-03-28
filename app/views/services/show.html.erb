@@ -2,7 +2,7 @@
 <center><%= render "/layouts/welcome" %></center>
 
 <div class='middle'><br><center>
-
+	<%= image_tag @icon ,:class=> "img-circular" %>
 <% @services.each do |service| %>
 	<br><ul>
 		<li>
