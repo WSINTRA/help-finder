@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   resources :user_comments
   resources :comments
   resources :users
+  resources :analytics
 
 
   get "/", to: "homes#index"
