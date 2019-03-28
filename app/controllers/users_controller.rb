@@ -3,8 +3,10 @@ class UsersController < ApplicationController
 
 	def new
     # GET /users/new
+    if logged_in?
+      redirect_to "/services"
+    end
     @user = User.new
-    render :new
   end
 
   def create
@@ -12,6 +14,8 @@ class UsersController < ApplicationController
     if @user.valid?
       session[:user_id] = @user.id
       redirect_to @user
+    else
+      render :new
     end
   end
 

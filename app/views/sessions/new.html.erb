@@ -1,9 +1,22 @@
-<h1>Log in</h1>
 <%= render "/layouts/errors", :object => @user %>
-<%= form_tag("/sessions") do %>
-  <%= label_tag :username %>
-  <%= text_field_tag :username %>
-  <%= label_tag :password %>
-  <%= password_field_tag :password %>
-  <%= submit_tag "Login" %>
-<% end %>
+
+<div class="container">
+	<div class="columns is-centered">
+       <div class="column is-half">
+       	<h1 class="is-size-1">Log in</h1>
+			<%= form_with url: "/sessions", method: 'post' do |f| %>
+			  <%= f.label :username, class: 'label' %>
+			  <%= f.text_field :username, class: 'input' %>
+			  <% if @user.errors.any? %>
+			  	<%= f.label :password, class: 'label' %>
+			  	<%= f.password_field :password, class: 'input is-danger' %>
+			  	<p class="help is-danger">You must enter a password</p>
+			  <% else %>
+			  	<%= f.label :password, class: 'label' %>
+			  	<%= f.password_field :password, class: 'input' %>
+			  <% end %>
+			  <%= f.submit "Login", class: "button is-primary" %>
+			<% end %>
+		</div>
+	</div>
+</div>

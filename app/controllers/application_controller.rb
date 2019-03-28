@@ -15,15 +15,5 @@ class ApplicationController < ActionController::Base
 
   def logged_in?
     !!current_user
-    # return either true or false
-    # converts things that are truthy to true
-    # converts things that are false to false
-
-    # if current_user != nil
-    #   return true
-    # else
-    #   return false
-    # end
-    # if current_user return true else false
   end
 end

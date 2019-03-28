@@ -1,10 +1,10 @@
-<br><div class='middle'>
-<center>
+<div class="columns">
 <%@facility_ids.each do |id|%>
-<h1><%= Facility.find(id).name %>
-<%= Facility.find(id).address %></h1><br>
-<%= Facility.find(id).map_link.html_safe %></h1>
-
-	<%end %>
-	</center></div>
+<div class="column">
+  <%= link_to Facility.find(id).name, Facility.find(id) %>
+  <%= Facility.find(id).address %><br>
+  <%= Facility.find(id).map_link.html_safe %>
+</div>
+<%end %>
+</div>
 	<h1><%=link_to "BACK", :back%></h1>
