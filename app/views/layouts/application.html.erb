@@ -4,14 +4,20 @@
     <title>HelpFinder</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.4/css/bulma.css" />
     <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Abel" />
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
-      <%= image_tag("Artboard 1.png",style: 'height:15%;width:auto;')%><br>
-  <div class='left-sidebar'> </div>
+    <div class="container">
+      <div class="columns is-centered">
+       <div class="column is-one-fifth">
+          <%= image_tag("Artboard 1.png",style: 'height:50px;width:auto;text-align: center')%><br>
+        </div>
+      </div>
+</div>
     <%= yield %>
 
     
