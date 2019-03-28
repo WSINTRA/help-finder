@@ -12,7 +12,7 @@ class ServicesController < ApplicationController
 
    
    	def show
-      binding.pry
+     
    		@service_type = ServiceType.find_by(name: params[:service][:service_type])
       @icon = ""
       case @service_type.name  #code to decide which icon to render
