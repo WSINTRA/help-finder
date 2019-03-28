@@ -1,0 +1,121 @@
+<div class="container">
+	<div class="columns is-centered">
+       <div class="column is-half">
+       		<h1 class="title">Analytics</h1>
+	       	<nav class="level">
+			  <div class="level-item has-text-centered">
+			    <div>
+			      <p class="heading">Users</p>
+			      <p class="title"><%= User.count %></p>
+			    </div>
+			  </div>
+			  <div class="level-item has-text-centered">
+			    <div>
+			      <p class="heading">Comments</p>
+			      <p class="title"><%= Comment.count %></p>
+			    </div>
+			  </div>
+			  <div class="level-item has-text-centered">
+			    <div>
+			      <p class="heading">Services</p>
+			      <p class="title"><%= Service.count %></p>
+			    </div>
+			  </div>
+			  <div class="level-item has-text-centered">
+			    <div>
+			      <p class="heading">Facilities</p>
+			      <p class="title"><%= Facility.count %></p>
+			    </div>
+			  </div>
+			</nav>
+
+			<hr>
+
+			<p class="subtitle">Latest User</p>
+			<p>@<%= link_to User.last.username, User.last %></p>
+
+			<hr>
+
+			<p class="subtitle">Latest Comment</p>
+			<article class="media">
+				  <figure class="media-left">
+				    <p class="image is-64x64">
+				      <img src="https://bulma.io/images/placeholders/128x128.png">
+				    </p>
+				  </figure>
+				  <div class="media-content">
+				    <div class="content">
+				      <p>
+				        <strong><%= link_to Comment.last.user.username, Comment.last.user %></strong> <small>31m</small>
+				        <br>
+				        <%= Comment.last.description %>
+				        </p>
+				    </div>
+				    <nav class="level is-mobile">
+				      <div class="level-left">
+				        <a class="level-item">
+				          <span class="icon is-small"><i class="fas fa-reply"></i></span>
+				        </a>
+				        <a class="level-item">
+				          <span class="icon is-small"><i class="fas fa-retweet"></i></span>
+				        </a>
+				        <a class="level-item">
+				          <span class="icon is-small"><i class="fas fa-heart"></i></span>
+				        </a>
+				      </div>
+				    </nav>
+				  </div>
+				</article>
+
+
+		<hr>
+		<p class="subtitle">Users (<%= User.count %>)</p>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th><abbr title="ID">ID</abbr></th>
+      <th>Username</th>
+      <th><abbr title="Played">Age</abbr></th>
+      <th><abbr title="Won">Comments</abbr></th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tfoot>
+    <tr>
+      <th><abbr title="ID">ID</abbr></th>
+      <th>Username</th>
+      <th><abbr title="Played">Age</abbr></th>
+      <th><abbr title="Won">Comments</abbr></th>
+      <th>Actions</th>
+    </tr>
+  </tfoot>
+  <tbody>
+  	<% User.all.each do |u| %> 
+  		<tr>
+  			<td><%= u.id %></td>
+  			<td><%= link_to u.username, u %></td>
+  			<td>30</td>
+  			<td><%= u.comments.count %></td>
+  			<td>
+  				<nav class="level">
+				      <div class="level-left">
+				        <a class="level-item">
+				          <span class="icon is-small"><i class="fas fa-trash"></i></span>
+				        </a>
+				        <a class="level-item">
+				          <span class="icon is-small"><i class="fas fa-edit"></i></span>
+				        </a>
+				      </div>
+				    </nav>
+  			</td>
+  		</tr>
+  	<% end %>
+  </tbody>
+</table>
+
+
+
+       </div>
+   </div>
+</div>
