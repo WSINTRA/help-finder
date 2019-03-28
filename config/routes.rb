@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   resources :users
 
 
+  get "/", to: "homes#index"
   get "/sessions/new", to: "sessions#new", as: "login" #login_path
   delete "/sessions", to: "sessions#destroy"
   get "/login", to: "sessions#new"

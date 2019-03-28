@@ -11,13 +11,44 @@
   </head>
 
   <body>
+    <br>
     <div class="container">
       <div class="columns is-centered">
-       <div class="column is-one-fifth">
-          <%= image_tag("Artboard 1.png",style: 'height:50px;width:auto;text-align: center')%><br>
-        </div>
-      </div>
-</div>
+       <div class="column is-half">
+
+
+
+<nav class="level">
+  <p class="level-item has-text-centered">
+    <a class="link is-info">Home</a>
+  </p>
+  <p class="level-item has-text-centered">
+    <%= link_to "Services", "/services", class: "link is-info" %>
+    <!-- <a class="link is-info">Services</a> -->
+  </p>
+  <p class="level-item has-text-centered">
+          <%= image_tag("Artboard 1.png",style: 'height:30px;width:auto;text-align: center')%><br>
+  </p>
+
+  <% if logged_in? %>
+  <p class="level-item has-text-centered">
+    <%= form_with url: '/sessions', method: 'delete' do |f| %>
+      <%= f.submit value: "Logout", class: "button" %>
+    <% end %>
+  </p>
+  <% else %>
+  <p class="level-item has-text-centered">
+    <%= link_to "Register", "/users/new" %>
+  </p>
+  <p class="level-item has-text-centered">
+    <%= link_to "Login", "/sessions/new" %>
+  </p>
+  <% end %>
+</nav>
+
+       </div>
+     </div>
+   </div>
     <%= yield %>
 
     

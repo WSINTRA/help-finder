@@ -19,32 +19,36 @@
 			<hr>
 			<h1 class="title">Comments</h1>
 
-			<%= form_with url: '/comments', method: 'post' do |f| %>
-			<article class="media">
-			  <figure class="media-left">
-			    <p class="image is-64x64">
-			      <img src="https://bulma.io/images/placeholders/128x128.png">
-			    </p>
-			  </figure>
-			  <div class="media-content">
-			    <div class="field">
-			      <p class="control">
-			      	<%= f.text_area :description, class: "textarea", placeholder: "Post a comment..." %>
-			        <!-- <textarea class="textarea" placeholder="Post a comment..."></textarea> -->
-			      </p>
-			    </div>
-			    <nav class="level">
-			      <div class="level-left">
-			        <div class="level-item">
-			        	<%= hidden_field(:facility, :id) %>
-			        	<%= f.submit class: "button is-info", value: "Post Comment"%>
-			          <!-- <a class="button is-info">Post Comment</a> -->
-			        </div>
-			      </div>
-			    </nav>
-			  </div>
-			</article>
+			<% if logged_in? %>
+				<%= form_with url: '/comments', method: 'post' do |f| %>
+				<article class="media">
+				  <figure class="media-left">
+				    <p class="image is-64x64">
+				      <img src="https://bulma.io/images/placeholders/128x128.png">
+				    </p>
+				  </figure>
+				  <div class="media-content">
+				    <div class="field">
+				      <p class="control">
+				      	<%= f.text_area :description, class: "textarea", placeholder: "Post a comment..." %>
+				        <!-- <textarea class="textarea" placeholder="Post a comment..."></textarea> -->
+				      </p>
+				    </div>
+				    <nav class="level">
+				      <div class="level-left">
+				        <div class="level-item">
+				        	<%= hidden_field(:facility, :id) %>
+				        	<%= f.submit class: "button is-info", value: "Post Comment"%>
+				          <!-- <a class="button is-info">Post Comment</a> -->
+				        </div>
+				      </div>
+				    </nav>
+				  </div>
+				</article>
 
+				<% end %>
+			<% else %>
+				<p class="is-size-5">You must be <%= link_to "logged in", "/sessions/new" %> to leave comments</p>
 			<% end %>
 			<br>
 
@@ -77,9 +81,15 @@
 				      </div>
 				    </nav>
 				  </div>
-				  <div class="media-right">
-				    <button class="delete"></button>
-				  </div>
+				  <% if comment.user == current_user %>
+					  <div class="media-right">
+					  	<%= form_with model: comment, method: 'delete' do |f| %>
+					  		<%= hidden_field(:facility, :id) %>
+					  		<%= f.submit class: "delete" %>
+					  	<% end %>
+					    <!-- <button class="delete"></button> -->
+					  </div>
+				  <% end %>
 				</article>
 			<% end %>
        </div>

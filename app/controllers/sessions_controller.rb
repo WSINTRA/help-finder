@@ -13,10 +13,10 @@ class SessionsController < ApplicationController
       redirect_to user_path(@user)
     else
       if @user != nil #Built this so it catches incorrect usernames - WS
-     @user.errors.add(:incorrect, "username or password")
+        @user.errors.add(:incorrect, "username or password")
       else
-      @user = User.new 
-      @user.errors.add(:incorrect, "username or password")
+        @user = User.new 
+        @user.errors.add(:incorrect, "username or password")
     end
     render :new
     end
@@ -26,5 +26,9 @@ class SessionsController < ApplicationController
   def destroy
     session.delete :user_id
     redirect_to login_path
+  end
+
+  def logout
+    redirect_to :destroy
   end
 end
